@@ -1,33 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rajulkiet.cap.student_entry">
+    tools:context="com.rajulkiet.cap.StudentEntry">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_student_entry" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:text="Name"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView3" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="15dp"
+        android:text="email" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignStart="@+id/name"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_toEndOf="@+id/textView4"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="19dp"
+        android:text="branch" />
+
+    <EditText
+        android:id="@+id/branch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignStart="@+id/name"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="12dp"
+        android:text="section" />
+
+    <EditText
+        android:id="@+id/section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignStart="@+id/name"
+        android:layout_alignTop="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_below="@+id/textView6"
+        android:layout_marginTop="12dp"
+        android:text="contact" />
+
+    <EditText
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignStart="@+id/name"
+        android:layout_alignTop="@+id/textView7"
+        android:layout_toEndOf="@+id/textView7"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView7"
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="12dp"
+        android:text="rollno" />
+
+    <EditText
+        android:id="@+id/rollno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_alignTop="@+id/textView8"
+        android:layout_toEndOf="@+id/textView8"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_alignStart="@+id/name" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rollno"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:onClick="SubmitData"
+        android:text="Submit" />
+</RelativeLayout>
