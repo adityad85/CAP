@@ -8,7 +8,7 @@ import android.os.Parcelable;
  */
 
 public class Students implements Parcelable {
-    public String name,branch,section,contact,rollno,year;
+    private String name, branch, section, contact, rollno, year;
     protected Students(){
 
     }
@@ -31,7 +31,42 @@ public String getSection()
 {
     return section;
 }
-public String
+
+    public String getContact() {
+        return contact;
+    }
+
+    public String getRollno() {
+        return rollno;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setName() {
+        this.name = name;
+    }
+
+    public void setBranch() {
+        this.branch = branch;
+    }
+
+    public void setRollno() {
+        this.rollno = rollno;
+    }
+
+    public void setYear() {
+        this.year = year;
+    }
+
+    public void setSection() {
+        this.section = section;
+    }
+
+    public void setContact() {
+        this.contact = contact;
+    }
     public static final Creator<Students> CREATOR = new Creator<Students>() {
         @Override
         public Students createFromParcel(Parcel in) {
