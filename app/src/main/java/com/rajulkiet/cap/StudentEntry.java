@@ -19,8 +19,8 @@ public class StudentEntry extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_entry);
         Button Sub = (Button) findViewById(R.id.submit);
-        Name = (EditText) findViewById(R.id.branch);
-        Email = (EditText) findViewById(R.id.contact);
+        Name = (EditText) findViewById(R.id.name);
+        Email = (EditText) findViewById(R.id.email);
         Branch = (EditText) findViewById(R.id.branch);
         Contact = (EditText) findViewById(R.id.contact);
         Section = (EditText) findViewById(R.id.section);
