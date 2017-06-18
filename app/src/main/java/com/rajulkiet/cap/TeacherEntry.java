@@ -1,5 +1,6 @@
 package com.rajulkiet.cap;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -57,33 +59,39 @@ public class TeacherEntry extends AppCompatActivity {
         final String emailis = email.getText().toString();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("TEACHERS");
         query.whereEqualTo("id", emailis.split("@")[0].toString());
-        final ParseObject[] obje = new ParseObject[1];
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                for (ParseObject obj : objects) {
-                    if (e == null)
-                        obje[0] = obj;
-                    else
-                        obje[0] = new ParseObject("TEACHERS");
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+                                       @Override
+                                       public void done(ParseObject object, ParseException e) {
+                                           ParseObject oo = object;
+                                           if (oo == null) {
+                                               oo = new ParseObject("TEACHERS");
+                                           }
+                                           ParseACL acl = new ParseACL();
+                                           acl.setPublicReadAccess(true);
+                                           String br = sp1.getSelectedItem().toString();
+                                           oo.setACL(acl);
+                                           Log.i("herere", br);
+                                           oo.put("branch", br);
+                                           oo.put("contact", con.getText().toString());
+                                           oo.put("email", emailis);
+                                           oo.put("id", emailis.split("@")[0].toString());
 
-                }
-                ParseACL acl = new ParseACL();
-                acl.setPublicReadAccess(true);
-                obje[0].setACL(acl);
-                obje[0].put("branch", sp1.getSelectedItem().toString());
-                obje[0].put("contact", con.getText().toString());
-                obje[0].put("email", emailis);
-                obje[0].put("id", emailis.split("@")[0].toString());
+                                           oo.saveInBackground(new SaveCallback() {
+                                               @Override
+                                               public void done(ParseException e) {
+                                                   if (e != null)
+                                                       Log.i("eee", e.getMessage().toString());
+                                                   else {
+                                                       Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
+                                                       Intent i = new Intent(getApplicationContext(), SubjectSubmit.class);
+                                                       startActivity(i);
+                                                   }
+                                               }
+                                           });
+                                       }
+                                   }
+        );
 
-                obje[0].saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        });
 
 
     }
