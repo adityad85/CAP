@@ -46,7 +46,8 @@ public class AttendanceUpdate extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         Log.i("as", "see");
 
-        //adapter.notifyDataSetChanged();
+        //a
+        // dapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
     }
