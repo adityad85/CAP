@@ -9,6 +9,7 @@ import android.os.Parcelable;
 
 public class Students implements Parcelable {
     private String name, branch, section, contact, rollno, year;
+    boolean attendState;
     protected Students(){
 
     }
@@ -20,6 +21,8 @@ public class Students implements Parcelable {
         contact=in.readString();
         rollno=in.readString();
         year=in.readString();
+        attendState = Boolean.parseBoolean(in.readString());
+
     }
 public String getName(){
     return name;
@@ -52,19 +55,23 @@ public String getSection()
         this.branch = branch;
     }
 
-    public void setRollno() {
+    public void setAttendState(boolean attendState) {
+        this.attendState = attendState;
+    }
+
+    public void setRollno(String rollno) {
         this.rollno = rollno;
     }
 
-    public void setYear() {
+    public void setYear(String year) {
         this.year = year;
     }
 
-    public void setSection() {
+    public void setSection(String section) {
         this.section = section;
     }
 
-    public void setContact() {
+    public void setContact(String contact) {
         this.contact = contact;
     }
     public static final Creator<Students> CREATOR = new Creator<Students>() {
@@ -92,5 +99,10 @@ public String getSection()
         dest.writeString(contact);
         dest.writeString(rollno);
         dest.writeString(year);
+        dest.writeString(String.valueOf(attendState));
+    }
+
+    public boolean getAttendState() {
+        return attendState;
     }
 }

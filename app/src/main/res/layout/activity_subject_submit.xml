@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.rajulkiet.cap.SubjectSubmit">
 
-</android.support.constraint.ConstraintLayout>
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="79dp"
+        android:layout_height="25dp"
+        tools:layout_editor_absoluteY="25dp"
+        app:layout_constraintRight_toLeftOf="@+id/spinner3"
+        android:layout_marginRight="12dp"
+        android:entries="@array/branches"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="73dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteY="25dp"
+        tools:layout_editor_absoluteX="101dp"
+        android:entries="@array/branches"
+        android:layout_alignBottom="@+id/spinner2"
+        android:layout_toEndOf="@+id/spinner2"
+        android:layout_marginStart="12dp" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="81dp"
+        android:layout_height="25dp"
+        tools:layout_editor_absoluteY="25dp"
+        app:layout_constraintRight_toLeftOf="@+id/spinner5"
+        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/spinner3"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:layout_editor_absoluteX="209dp"
+        android:entries="@array/branches"
+        android:layout_marginStart="32dp"
+        android:layout_alignBaseline="@+id/spinner5"
+        android:layout_alignBottom="@+id/spinner5"
+        android:layout_toEndOf="@+id/spinner3" />
+
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="81dp"
+        android:layout_height="25dp"
+        tools:layout_editor_absoluteY="25dp"
+        tools:layout_editor_absoluteX="272dp"
+        android:entries="@array/branches"
+        android:layout_alignTop="@+id/spinner3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="18dp" />
+</RelativeLayout>

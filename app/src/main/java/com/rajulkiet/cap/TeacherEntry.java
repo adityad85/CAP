@@ -24,7 +24,7 @@ import java.util.List;
 public class TeacherEntry extends AppCompatActivity {
 
     Spinner sp1;
-    EditText con, email;
+    EditText con, email, firstName, lastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,8 @@ public class TeacherEntry extends AppCompatActivity {
 */
         con = (EditText) findViewById(R.id.contact);
         email = (EditText) findViewById(R.id.email);
+        firstName = (EditText) findViewById(R.id.firstName);
+        lastName = (EditText) findViewById(R.id.lastName);
 
     }
 
@@ -75,6 +77,8 @@ public class TeacherEntry extends AppCompatActivity {
                                            oo.put("contact", con.getText().toString());
                                            oo.put("email", emailis);
                                            oo.put("id", emailis.split("@")[0].toString());
+                                           oo.put("first", firstName.getText().toString());
+                                           oo.put("last", lastName.getText().toString());
 
                                            oo.saveInBackground(new SaveCallback() {
                                                @Override
@@ -83,7 +87,7 @@ public class TeacherEntry extends AppCompatActivity {
                                                        Log.i("eee", e.getMessage().toString());
                                                    else {
                                                        Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
-                                                       Intent i = new Intent(getApplicationContext(), SubjectSubmit.class);
+                                                       Intent i = new Intent(getApplicationContext(), AttendanceUpdate.class);
                                                        startActivity(i);
                                                    }
                                                }

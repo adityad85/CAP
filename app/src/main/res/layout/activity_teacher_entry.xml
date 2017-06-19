@@ -65,5 +65,24 @@
         android:text="Name"
         android:layout_alignStart="@+id/spinner" />
 
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="First Name" />
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/firstName"
+        android:layout_toEndOf="@+id/firstName"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Last Name" />
+
 
 </RelativeLayout>
