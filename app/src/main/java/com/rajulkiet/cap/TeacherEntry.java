@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -61,6 +62,35 @@ public class TeacherEntry extends AppCompatActivity {
         final String emailis = email.getText().toString();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("TEACHERS");
         query.whereEqualTo("id", emailis.split("@")[0].toString());
+        /*query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if(e==null)
+                {
+                    ParseObject obj;
+                    if(objects.size()>0)
+                    {obj= objects.get(0);
+                        String br = sp1.getSelectedItem().toString();
+                        obj.put("branch", br);
+                        obj.put("contact", con.getText().toString());
+                        obj.put("email", emailis);
+                        obj.put("id", emailis.split("@")[0].toString());
+                        obj.put("first",firstName.getText().toString());
+                        obj.put("last",lastName.getText().toString());
+                        obj.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                if(e==null)
+                                    Toast.makeText(getApplication(),"Done",Toast.LENGTH_LONG).show();
+                                else e.printStackTrace();
+                            }
+                        });
+
+                    }
+
+                }
+            }
+        });*/
         query.getFirstInBackground(new GetCallback<ParseObject>() {
                                        @Override
                                        public void done(ParseObject object, ParseException e) {
@@ -70,6 +100,7 @@ public class TeacherEntry extends AppCompatActivity {
                                            }
                                            ParseACL acl = new ParseACL();
                                            acl.setPublicReadAccess(true);
+                                           acl.setPublicWriteAccess(true);
                                            String br = sp1.getSelectedItem().toString();
                                            oo.setACL(acl);
                                            Log.i("herere", br);

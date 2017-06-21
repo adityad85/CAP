@@ -8,8 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -57,6 +64,32 @@ public class AttendanceUpdateAdapter extends RecyclerView.Adapter<AttendanceUpda
             super(itemView);
             textViewRollNo = (TextView) itemView.findViewById(R.id.rollno);
             toggleButtonAttend = (ToggleButton) itemView.findViewById(R.id.attend);
+            toggleButtonAttend.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("attendance_1");
+                    query.whereEqualTo("student_id", textViewRollNo.getText().toString());
+                    query.findInBackground(new FindCallback<ParseObject>() {
+                        @Override
+                        public void done(List<ParseObject> objects, ParseException e) {
+
+                        }
+                    });
+                    ParseObject obj = new ParseObject("attendance_1");
+                    obj.put("student_id", textViewRollNo.getText().toString());
+                    obj.put("present", buttonView.isChecked());
+                    obj.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e != null) {
+                                Log.i("ee", "dds");
+                                e.printStackTrace();
+                            }
+
+                        }
+                    });
+                }
+            });
         }
     }
 }
